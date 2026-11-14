@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tomato-knowledge-tree"
+version = "0.1.0"
+description = "Text-image hierarchical knowledge tree construction for tomato knowledge"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+  "numpy>=1.26,<3",
+  "pandas>=2.2,<3",
+  "scikit-learn>=1.4,<2",
+  "openpyxl>=3.1,<4",
+  "PyYAML>=6.0,<7",
+  "networkx>=3.2,<4",
+  "tqdm>=4.66,<5",
+]
+
+[project.optional-dependencies]
+data = ["fiftyone>=1.16,<2"]
+
+[project.scripts]
+tomato-prepare = "tomato_kt.prepare_tomatomap:main"
+tomato-embed = "tomato_kt.embeddings:main"
+tomato-train = "tomato_kt.train:main"
+tomato-evaluate = "tomato_kt.evaluate:main"
+tomato-aggregate-runs = "tomato_kt.aggregate_runs:main"
+tomato-analyze-runs = "tomato_kt.analyze_runs:main"
+tomato-compare-experiments = "tomato_kt.compare_experiments:main"
+tomato-compare-baselines = "tomato_kt.compare_baselines:main"
+tomato-cosine-baseline = "tomato_kt.cosine_baseline:main"
+tomato-download-model = "tomato_kt.download_model:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".conda-env", ".conda-pkgs", "models", "vendor"]

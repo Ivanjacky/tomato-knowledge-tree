@@ -1,0 +1,3 @@
+# Required only when preparing the Hugging Face/Voxel51 TomatoMAP release
+# from its local persistent FiftyOne dataset.
+fiftyone>=1.16,<2
